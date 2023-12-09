@@ -1,0 +1,31 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Define the schema for the Character model
+model Character {
+  id          Int      @id @default(autoincrement())
+  name        String
+  image1      String
+  image2      String?
+  
+  // Stats
+  hp          Int
+  sp          Int
+  atk         Int
+  def         Int
+  mag         Int
+  mdef        Int
+  crit        Int
+  speed       Int
+
+  // Additional Fields
+  influence   String
+  job         String
+  rarity      String
+}

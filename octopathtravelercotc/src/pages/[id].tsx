@@ -2,11 +2,12 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar";
+import CharacterType from "../../components/types";
 
 const CharacterDetails: React.FC = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [character, setCharacter] = useState(null);
+  const [character, setCharacter] = useState<CharacterType | null>(null);
 
   useEffect(() => {
     const fetchCharacter = async () => {
@@ -40,7 +41,7 @@ const CharacterDetails: React.FC = () => {
           <div className="max-w-full md:w-1/2 mb-4 md:mb-0">
             <img
               src={character.image2}
-              alt={`${character.name} Bigger Art`}
+              alt={character.name}
               className="w-full max-h-96 object-contain mt-4"
             />
           </div>
@@ -49,7 +50,7 @@ const CharacterDetails: React.FC = () => {
         <div className="max-w-full md:w-1/2 md:ml-4 border md:border-l-0 md:border-t md:border-t-0 md:pt-0 md:pl-4 text-center md:text-left">
           <img
             src={character.image1}
-            alt={character.name}
+            alt={character.name || "Fallback Alt Text"}
             className="max-w-full h-40 rounded-md object-cover mb-4"
           />
           {/* Details and Stats Container */}
@@ -64,14 +65,30 @@ const CharacterDetails: React.FC = () => {
             {/* Stats */}
             <div className="md:mr-4 text-center md:text-left">
               <h2 className="text-xl font-bold mb-2">Stats</h2>
-              <p><strong>HP:</strong> {character.hp}</p>
-              <p><strong>SP:</strong> {character.sp}</p>
-              <p><strong>ATK:</strong> {character.atk}</p>
-              <p><strong>DEF:</strong> {character.def}</p>
-              <p><strong>MAG:</strong> {character.mag}</p>
-              <p><strong>MDEF:</strong> {character.mdef}</p>
-              <p><strong>Crit:</strong> {character.crit}</p>
-              <p><strong>Speed:</strong> {character.speed}</p>
+              <p>
+                <strong>HP:</strong> {character.hp}
+              </p>
+              <p>
+                <strong>SP:</strong> {character.sp}
+              </p>
+              <p>
+                <strong>ATK:</strong> {character.atk}
+              </p>
+              <p>
+                <strong>DEF:</strong> {character.def}
+              </p>
+              <p>
+                <strong>MAG:</strong> {character.mag}
+              </p>
+              <p>
+                <strong>MDEF:</strong> {character.mdef}
+              </p>
+              <p>
+                <strong>Crit:</strong> {character.crit}
+              </p>
+              <p>
+                <strong>Speed:</strong> {character.speed}
+              </p>
             </div>
           </div>
         </div>
@@ -81,11 +98,3 @@ const CharacterDetails: React.FC = () => {
 };
 
 export default CharacterDetails;
-
-
-
-
-
-
-
-

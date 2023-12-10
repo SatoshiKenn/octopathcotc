@@ -21,7 +21,7 @@ const CharacterList: React.FC = () => {
         const data = await response.json();
         
         // Sort characters based on id
-        const sortedCharacters = data.sort((a, b) => a.id - b.id);
+        const sortedCharacters = data.sort((a: { id: number; }, b: { id: number; }) => a.id - b.id);
         
         setCharacters(sortedCharacters);
       } catch (error) {

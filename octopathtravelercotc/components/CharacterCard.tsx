@@ -17,7 +17,7 @@ const CharacterList: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/characters');
+        const response = await fetch('/api/characters');
         const data = await response.json();
         
         // Sort characters based on id

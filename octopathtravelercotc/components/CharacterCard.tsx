@@ -1,5 +1,6 @@
 // components/CharacterList.tsx
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 interface Character {
   id: number;
@@ -18,7 +19,11 @@ const CharacterList: React.FC = () => {
       try {
         const response = await fetch('http://localhost:3000/api/characters');
         const data = await response.json();
-        setCharacters(data);
+        
+        // Sort characters based on id
+        const sortedCharacters = data.sort((a, b) => a.id - b.id);
+        
+        setCharacters(sortedCharacters);
       } catch (error) {
         console.error('Error fetching characters:', error);
       }
@@ -28,23 +33,25 @@ const CharacterList: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Character List</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="sm:flex-col">
+      <h2 className="text-3xl font-bold mb-4">Character List</h2>
+      <div className="charList flex flex-wrap -mx-4">
         {characters.map((character) => (
-          <div key={character.id} className="border p-4 rounded-md mb-4">
-            <div className="flex justify-center mb-4">
-              <img
-                src={character.image1}
-                alt={character.name}
-                className="max-w-full h-auto rounded-md"
-              />
-            </div>
-            <h2 className="text-xl font-bold mb-2">{character.name}</h2>
-            <p>Rarity: {character.rarity}</p>
-            <p>Influence: {character.influence}</p>
-            <p>Job: {character.job}</p>
-          </div>
+          <Link key={character.id} href={`${character.id}`}>
+              <div className="border p-4 rounded-md">
+                <img
+                  src={character.image1}
+                  alt={character.name}
+                  className="sprite max-w-full h-40 rounded-md object-cover"
+                />
+                <div className="mt-4">
+                  <h2 className="text-xl font-bold mb-2">{character.name}</h2>
+                  <p>Rarity: {character.rarity}</p>
+                  <p>Influence: {character.influence}</p>
+                  <p>Job: {character.job}</p>
+                </div>
+              </div>
+          </Link>
         ))}
       </div>
     </div>
@@ -52,4 +59,10 @@ const CharacterList: React.FC = () => {
 };
 
 export default CharacterList;
+
+
+
+
+
+
 

@@ -15,22 +15,23 @@ const CharacterList: React.FC = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/characters');
-        const data = await response.json();
-        
-        // Sort characters based on id
-        const sortedCharacters = data.sort((a: { id: number; }, b: { id: number; }) => a.id - b.id);
-        
-        setCharacters(sortedCharacters);
-      } catch (error) {
-        console.error('Error fetching characters:', error);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      // Use the relative path to your API route
+      const response = await fetch('/api/characters');
+      const data = await response.json();
+      
+      // Sort characters based on id
+      const sortedCharacters = data.sort((a: { id: number }, b: { id: number }) => a.id - b.id);
+      
+      setCharacters(sortedCharacters);
+    } catch (error) {
+      console.error('Error fetching characters:', error);
+    }
+  };
 
-    fetchData();
-  }, []);
+  fetchData();
+}, []);
 
   return (
     <div className="sm:flex-col">

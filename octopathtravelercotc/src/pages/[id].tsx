@@ -13,7 +13,7 @@ const CharacterDetails: React.FC = () => {
     const fetchCharacter = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/characters/${id}`
+          `/api/characters/${id}`
         );
         const data = await response.json();
         setCharacter(data);

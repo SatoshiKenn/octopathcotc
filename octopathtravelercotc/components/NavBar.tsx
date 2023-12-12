@@ -6,18 +6,23 @@ const NavBar = () => {
       <div className="container mx-auto">
         <ul className="flex items-center flex-wrap gap-4">
           <li className="mb-2">
-            <Link className="links text-white hover:text-gray-300" href="/">
+            <Link className="links text-black hover:text-gray-300" href="/">
               Home
             </Link>
           </li>
           <li className="mb-2">
-            <Link className="links text-white hover:text-gray-300" href="/teams">
+            <Link className="links text-black hover:text-gray-300" href="/teams">
               Teams
             </Link>
           </li>
           <li className="mb-2">
-            <Link className="links text-white hover:text-gray-300" href="/travelers">
+            <Link className="links text-black hover:text-gray-300" href="/travelers">
               Travelers
+            </Link>
+          </li>
+          <li className="mb-2">
+            <Link className="links text-black hover:text-gray-300" href="/login">
+              Login
             </Link>
           </li>
         </ul>

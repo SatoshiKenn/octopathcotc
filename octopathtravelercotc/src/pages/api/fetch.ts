@@ -1,15 +1,11 @@
 export const fetcher = async (path: string, options?: RequestInit): Promise<Response> => {
-  console.log("entra a fetch");
   const requestOptions: RequestInit = {
     ...options,
     headers: {
-      ...(options?.headers || {
-        'content-type': 'application/json'
-      }),
+      ...(options?.headers || {}),
     },
   };
 
-  console.log("Sale de fetch");
   return fetch(path, requestOptions);
 };
 

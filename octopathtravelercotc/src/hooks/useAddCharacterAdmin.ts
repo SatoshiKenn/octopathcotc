@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import fetcher from '@/pages/api/fetch';
+import fetcherChar from '@/pages/api/fetchChar';
 
 const useAddCharacterAdmin = () => {
   const initialCharacterData = {
@@ -65,7 +65,7 @@ const useAddCharacterAdmin = () => {
 
     const postData = { ...characterData };
     
-    const postCharacter = await fetcher('/api/addCharacter', {
+    const postCharacter = await fetcherChar('/api/addCharacter', {
       method: 'POST',
       body: JSON.stringify(postData),
     });

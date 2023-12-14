@@ -30,11 +30,14 @@ const addCharacter = async (req: any, res: any) => {
       return res.status(400).json({ message: 'Invalid data. Please provide all required fields with valid values.' });
     }
 
+    const imageSpritePath = "images/";
+    const imageArtPath = "images/arts/";
+
     const character = await prisma.character.create({
       data: {
         name,
-        image1,
-        image2,
+        image1: `${imageSpritePath}/${image1}`,
+        image2: `${imageArtPath}/${image2}`,
         hp: parseInt(hp, 10),
         sp: parseInt(sp, 10),
         atk: parseInt(atk, 10),

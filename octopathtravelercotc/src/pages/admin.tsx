@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NavBar from "../../components/NavBar";
 import useAddCharacterAdmin from "../hooks/useAddCharacterAdmin";
+import Head from 'next/head';
 
 const Admin = () => {
   const { onSubmit, characterData, handleInputChange, errorMessage } =
@@ -8,6 +9,9 @@ const Admin = () => {
 
   return (
     <div className="flex flex-col items-center">
+      <Head>
+        <title>Administration</title>
+      </Head>
       <NavBar />
       <div className="p-8">
         <h1 className="text-3xl font-bold mb-4">Add New Character</h1>
@@ -40,7 +44,7 @@ const Admin = () => {
                 htmlFor="image1"
                 className="block text-sm font-medium text-gray-700"
               >
-                Image 1:
+                {'Image 1 (name.format)'}:
               </label>
               <input
                 type="text"
@@ -58,7 +62,7 @@ const Admin = () => {
                 htmlFor="image2"
                 className="block text-sm font-medium text-gray-700"
               >
-                Image 2:
+                {'Image 2 (name.format)'}
               </label>
               <input
                 type="text"
@@ -285,7 +289,7 @@ const Admin = () => {
                 <option value="" disabled>
                   Select Rarity
                 </option>
-                <option value="4 Stars">3 Stars</option>
+                <option value="3 Stars">3 Stars</option>
                 <option value="4 Stars">4 Stars</option>
                 <option value="5 Stars">5 Stars</option>
               </select>
@@ -307,3 +311,4 @@ const Admin = () => {
 };
 
 export default Admin;
+

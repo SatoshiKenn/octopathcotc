@@ -19,6 +19,8 @@ const CharacterList: React.FC<CharacterListProps> = ({ displaySavedCharacters = 
   const [savedIds, setSavedIds] = useState<number[]>([]);
 
   useEffect(() => {
+    document.title = displaySavedCharacters ? 'Favorites' : 'All Characters';
+
     const fetchData = async () => {
       try {
         const response = await fetch('/api/characters');
@@ -35,7 +37,8 @@ const CharacterList: React.FC<CharacterListProps> = ({ displaySavedCharacters = 
     const savedIdsString = localStorage.getItem('savedCharacterIds');
     const initialSavedIds = savedIdsString ? JSON.parse(savedIdsString) : [];
     setSavedIds(initialSavedIds);
-  }, []);
+  }, [displaySavedCharacters]);
+
 
   const handleSaveToLocalStorage = (id: number) => {
     if (!savedIds.includes(id)) {

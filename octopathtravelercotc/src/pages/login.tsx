@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NavBar from '../../components/NavBar';
 import useLogin from "@/hooks/useLogin";
+import Head from 'next/head';
 
 const Login = () => {
   const {
@@ -14,6 +15,9 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center">
+      <Head>
+        <title>Admin Login</title>
+      </Head>
       <NavBar />
       <div className="p-8">
         <h1 className="text-3xl font-bold mb-4">Admin Login</h1>
@@ -75,4 +79,3 @@ const Login = () => {
 };
 
 export default Login;
-

@@ -1,5 +1,4 @@
 export const fetcherChar = async (path: string, options?: RequestInit): Promise<Response> => {
-    console.log("entra a fetch");
     const requestOptions: RequestInit = {
       ...options,
       headers: {
@@ -8,8 +7,6 @@ export const fetcherChar = async (path: string, options?: RequestInit): Promise<
         }),
       },
     };
-  
-    console.log("Sale de fetch");
     return fetch(path, requestOptions);
   };
   

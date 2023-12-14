@@ -11,8 +11,8 @@ const NavBar = () => {
             </Link>
           </li>
           <li className="mb-2">
-            <Link className="links text-black hover:text-gray-300" href="/teams">
-              Teams
+            <Link className="links text-black hover:text-gray-300" href="/favorites">
+              Favorites
             </Link>
           </li>
           <li className="mb-2">
